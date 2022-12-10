@@ -40,15 +40,6 @@ const getEstablishments = async (
   return response.data.results;
 };
 
-const getCoaches = async (coachesIds: Set<number>): Promise<Coach[]> => {
-  const response = await apiInstance.get<BSportApiResponse<Coach>>(
-    `${apiURL}/coach?company=${companyId}&id__in=${Array.from(coachesIds).join(
-      ","
-    )}`
-  );
-  return response.data.results;
-};
-
 export const getOffers = async (
   fromDate: string,
   pageIndex: number,
@@ -88,17 +79,6 @@ export const getOffers = async (
   );
   const establishments = await getEstablishments(establishmentsIds);
 
-  // Fetch coaches
-  const coachesIds = results.reduce<Set<number>>(
-    (previous: Set<number>, offer: Offer): Set<number> => {
-      if (offer.coach_override) previous.add(offer.coach_override);
-      else if (offer.coach) previous.add(offer.coach);
-      return previous;
-    },
-    new Set()
-  );
-  const coaches = await getCoaches(coachesIds);
-
   // Enrich offers with all the data
   const enrichedOffers: FullOffer[] = results.map((offer): FullOffer => {
     const metaActivity = metaActivities.find(
@@ -110,12 +90,7 @@ export const getOffers = async (
           establishment.id === offer.establishment_override) ||
         establishment.id === offer.establishment
     );
-    const coach = coaches.find(
-      (coach) =>
-        (offer.coach_override && coach.id === offer.coach_override) ||
-        coach.id === offer.coach
-    );
-    return { ...offer, meta_activity: metaActivity, establishment, coach };
+    return { ...offer, meta_activity: metaActivity, establishment };
   });
 
   return { results: enrichedOffers, count };
@@ -159,4 +134,13 @@ export const getBookings = async (
   );
 
   return enrichedBookings;
+};
+
+// ******* Retrieval of one coach *******
+
+export const getCoach = async (coachId: number): Promise<Coach> => {
+  const response = await apiInstance.get<BSportApiResponse<Coach>>(
+    `${apiURL}/coach?company=${companyId}&id__in=${coachId}`
+  );
+  return response.data.results[0];
 };

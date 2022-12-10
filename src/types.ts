@@ -175,13 +175,10 @@ export interface Offer {
 export interface FullOffer
   extends Omit<
     Offer,
-    | "coach"
-    | "coach_override"
     | "establishment"
     | "establishment_override"
     | "meta_activity"
   > {
-  coach?: Coach;
   establishment?: Establishment;
   meta_activity?: MetaActivity;
 }
