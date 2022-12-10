@@ -54,10 +54,11 @@ const OffersList = () => {
           more results, so we want to show the "Load more results" button. */}
           {(data?.count ?? offers.length + 1) > offers.length && (
             <div
-              className="w-full rounded-lg bg-[#f1f1f1] hover:bg-[#dcdbdb] active:bg-[#cdcccc] flex justify-center items-center text-lg cursor-pointer h-[75px] mt-2 mr-4"
+              className="w-full bg-[#f1f1f1] hover:bg-[#dcdbdb] active:bg-[#cdcccc] flex justify-center items-center text-lg cursor-pointer h-[75px] mt-2 mr-4"
               onClick={() =>
                 setPageIndex((previousPageIndex) => previousPageIndex + 1)
               }
+              style={{ borderRadius: "0.5em 0.5em 0 0" }}
             >
               Charger plus de résultats
               {isLoading ? (
