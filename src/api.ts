@@ -53,7 +53,7 @@ export const getOffers = async (
   fromDate: string,
   pageIndex: number,
   toDate?: string
-): Promise<FullOffer[]> => {
+): Promise<{ results: FullOffer[]; count: number }> => {
   const params = new URLSearchParams();
   params.set("company", companyId.toString());
   params.set("min_date", fromDate);
@@ -64,7 +64,7 @@ export const getOffers = async (
   const response = await apiInstance.get<BSportApiResponse<Offer>>(
     `${apiURL}/offer?${params.toString()}`
   );
-  const { results } = response.data;
+  const { results, count } = response.data;
 
   // Fetch meta activities
   const metaActivitiesIds = results.reduce<Set<number>>(
@@ -118,7 +118,7 @@ export const getOffers = async (
     return { ...offer, meta_activity: metaActivity, establishment, coach };
   });
 
-  return enrichedOffers;
+  return { results: enrichedOffers, count };
 };
 
 // ******* Retrieval of the bookings *******

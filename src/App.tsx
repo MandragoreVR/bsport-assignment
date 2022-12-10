@@ -3,7 +3,7 @@ import OffersList from "./components/OffersList/OffersList";
 
 function App() {
   return (
-    <div>
+    <div className="flex flex-col items-center">
       <Header />
       <OffersList />
     </div>

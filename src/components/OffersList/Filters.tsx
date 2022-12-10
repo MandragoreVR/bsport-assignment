@@ -1,9 +1,13 @@
 import DateFilter from "./DateFilter";
 
-const Filters = () => {
+interface FilterProps {
+  setPageIndex: (pageIndex: number) => void;
+}
+
+const Filters = ({ setPageIndex }: FilterProps) => {
   return (
     <div className="pt-3">
-      <DateFilter />
+      <DateFilter setPageIndex={setPageIndex} />
     </div>
   );
 };

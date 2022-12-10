@@ -3,7 +3,11 @@ import { DatePicker } from "@mantine/dates";
 import { IconCalendar } from "@tabler/icons";
 import { useSearchParams } from "react-router-dom";
 
-const DateFilter = () => {
+interface DateFilterProps {
+  setPageIndex: (pageIndex: number) => void;
+}
+
+const DateFilter = ({ setPageIndex }: DateFilterProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const startDate = searchParams.get("startDate");
   const endDate = searchParams.get("endDate");
@@ -16,6 +20,7 @@ const DateFilter = () => {
         searchParams.delete("endDate");
       }
       setSearchParams(searchParams, { replace: true });
+      setPageIndex(1);
     }
   };
 
@@ -32,6 +37,7 @@ const DateFilter = () => {
       searchParams.delete("endDate");
     }
     setSearchParams(searchParams, { replace: true });
+    setPageIndex(1);
   };
 
   return (
