@@ -9,7 +9,12 @@ import { useEffect, useState } from "react";
 import { Loader } from "@mantine/core";
 import { IconChevronDown } from "@tabler/icons";
 
-const OffersList = () => {
+interface OffersListProps {
+  selectedOffer?: FullOffer;
+  setSelectedOffer: (offer?: FullOffer) => void;
+}
+
+const OffersList = ({ selectedOffer, setSelectedOffer }: OffersListProps) => {
   // pageIndex is used to fetch more results
   const [pageIndex, setPageIndex] = useState<number>(1);
   const [offers, setOffers] = useState<FullOffer[]>([]);
@@ -48,7 +53,12 @@ const OffersList = () => {
       ) : (
         <div className="overflow-auto mt-4">
           {offers.map((offer: FullOffer) => (
-            <RowCard key={offer.id} offer={offer} setSelectedOffer={() => {}} />
+            <RowCard
+              key={offer.id}
+              offer={offer}
+              selectedOfferId={selectedOffer?.id}
+              setSelectedOffer={setSelectedOffer}
+            />
           ))}
           {/* We use offers.length + 1 here because in the case where data is not defined, it means we are fetching
           more results, so we want to show the "Load more results" button. */}

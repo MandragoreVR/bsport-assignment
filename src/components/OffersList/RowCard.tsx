@@ -5,21 +5,25 @@ import getFrenchTimeFromISO from "../../utils/getFrenchTimeFromISO";
 
 interface RowCardProps {
   offer: FullOffer;
-  selectedOffer?: number;
-  setSelectedOffer: (offer?: number) => void;
+  selectedOfferId?: number;
+  setSelectedOffer: (offer?: FullOffer) => void;
 }
 
-const RowCard = ({ offer, selectedOffer, setSelectedOffer }: RowCardProps) => {
+const RowCard = ({
+  offer,
+  selectedOfferId,
+  setSelectedOffer,
+}: RowCardProps) => {
   const photoURL = offer.meta_activity?.cover_main ?? "default_sport.jpg";
   return (
     <div
       className={`pr-1 pl-2 py-2 h-[140px] cursor-pointer grid grid-cols-2 grid-rows-1 gap-x-4 hover:bg-[#f1f1f1] rounded-lg ${
-        selectedOffer === offer.id ? "bg-[#f1f1f1]" : ""
+        selectedOfferId === offer.id ? "bg-[#f1f1f1]" : ""
       } active:bg-[#e1e1e1]`}
       style={{
         gridTemplateColumns: "2fr 5fr",
       }}
-      onClick={() => setSelectedOffer(offer.id)}
+      onClick={() => setSelectedOffer(offer)}
     >
       <div className="w-full justify-center flex">
         <img
