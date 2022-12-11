@@ -14,6 +14,13 @@ interface OffersListProps {
   setSelectedOffer: (offer?: FullOffer) => void;
 }
 
+/**
+ * This component wraps the filters and the offers list, and offers the possibility to load
+ * more results.
+ * @param selectedOffer The offer that is currently selected
+ * @param setSelectedOffer The function to set the selected offer
+ * @returns The offers list
+ */
 const OffersList = ({ selectedOffer, setSelectedOffer }: OffersListProps) => {
   // pageIndex is used to fetch more results
   const [pageIndex, setPageIndex] = useState<number>(1);
@@ -74,7 +81,7 @@ const OffersList = ({ selectedOffer, setSelectedOffer }: OffersListProps) => {
             >
               Charger plus de résultats
               {isLoading ? (
-                <Loader size={20} className="ml-3 text-primary" />
+                <Loader className="ml-3" size={20} />
               ) : (
                 <IconChevronDown className="ml-2 h-7 w-7" />
               )}

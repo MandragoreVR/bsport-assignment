@@ -8,6 +8,12 @@ interface DateFilterProps {
   setPageIndex: (pageIndex: number) => void;
 }
 
+/**
+ * This component handles the filtering of the offers by date.
+ * It displays two date pickers and updates the URL search parameters accordingly to enable deeplinking.
+ * @param setPageIndex The function to set the page index to 1 when the date is changed
+ * @returns The date filter
+ */
 const DateFilter = ({ setPageIndex }: DateFilterProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const startDate = searchParams.get("startDate");
@@ -56,6 +62,7 @@ const DateFilter = ({ setPageIndex }: DateFilterProps) => {
         radius="md"
         size="lg"
         value={
+          // to prevent reaching past dates through the URL search parameters
           startDate && new Date(startDate) >= new Date()
             ? new Date(startDate)
             : new Date()
@@ -74,6 +81,7 @@ const DateFilter = ({ setPageIndex }: DateFilterProps) => {
         radius="md"
         size="lg"
         value={
+          // to prevent reaching past dates through the URL search parameters
           endDate && new Date(endDate) > new Date() ? new Date(endDate) : null
         }
       />

@@ -10,6 +10,13 @@ interface RowCardProps {
   setSelectedOffer: (offer?: FullOffer) => void;
 }
 
+/**
+ * This component is the row card used to display the offers list.
+ * @param offer The offer to display
+ * @param selectedOfferId The ID of the selected offer (to highlight the offer if it is selected)
+ * @param setSelectedOffer The function to set the selected offer
+ * @returns The row card
+ */
 const RowCard = ({
   offer,
   selectedOfferId,
