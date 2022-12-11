@@ -5,6 +5,7 @@ import getFrenchTimeFromISO from "../../utils/getFrenchTimeFromISO";
 import BookingsList from "./BookingsList";
 import CoachCard from "./CoachCard";
 import DetailCardHeader from "./DetailCardHeader";
+import LeafletMap from "./Map/LeafletMap";
 
 interface DetailOfferProps {
   offer?: FullOffer;
@@ -21,7 +22,7 @@ const DetailOffer = ({ offer }: DetailOfferProps) => {
       />
       <CoachCard coachId={offer.coach} />
       <div className="mt-3 mx-3">
-        <div className="float-right flex flex-col ml-5 space-y-3">
+        <div className="float-right flex flex-col ml-5 mb-3 space-y-3">
           <img
             src={offer.establishment?.cover ?? "gym-default.jpg"}
             alt="Establishment"
@@ -46,6 +47,17 @@ const DetailOffer = ({ offer }: DetailOfferProps) => {
           <span className="font-bold">Niveau : </span>
           {offer.custom_level ?? offer.level ?? "Niveau inconnu"}
         </p>
+        <p>
+            <span className="font-bold">Adresse : </span>
+            {offer.establishment?.location.address}
+        </p>
+        {offer.establishment?.location.latitude &&
+          offer.establishment?.location.longitude && (
+            <LeafletMap
+              establishmentLatitude={offer.establishment?.location.latitude}
+              establishmentLongitude={offer.establishment?.location.longitude}
+            />
+          )}
       </div>
     </div>
   );
