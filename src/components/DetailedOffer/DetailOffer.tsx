@@ -6,20 +6,29 @@ import BookingsList from "./BookingsList";
 import CoachCard from "./CoachCard";
 import DetailCardHeader from "./DetailCardHeader";
 import LeafletMap from "./Map/LeafletMap";
+import { IconX } from "@tabler/icons";
 
 interface DetailOfferProps {
   offer?: FullOffer;
+  setSelectedOffer: (offer?: FullOffer) => void;
 }
 
-const DetailOffer = ({ offer }: DetailOfferProps) => {
+const DetailOffer = ({ offer, setSelectedOffer }: DetailOfferProps) => {
   if (!offer) return null;
   return (
-    <div className="flex flex-col border-2 w-[40vw] h-[85vh] mt-5 overflow-auto pb-4">
+    <div className="flex flex-col border-none w-full h-full mt-0 xl:border-2 xl:w-[40vw] xl:h-[85vh] xl:mt-5 overflow-auto pb-4">
       <DetailCardHeader
         offerName={offer.meta_activity?.name}
         offerPicture={offer.meta_activity?.cover_main}
         offerPictureAlt={offer.meta_activity?.alt_cover_main}
       />
+      {/* Close icon */}
+      <div
+        onClick={() => setSelectedOffer(undefined)}
+        className="transition bg-[#00000033] hover:bg-[#ddd1] cursor-pointer rounded-full p-1 absolute top-3 right-3 xl:hidden"
+      >
+        <IconX size={20} stroke={1.5} />
+      </div>
       <CoachCard coachId={offer.coach} />
       <div className="mt-3 mx-3">
         <div className="float-right flex flex-col ml-5 mb-3 space-y-3">
@@ -48,8 +57,8 @@ const DetailOffer = ({ offer }: DetailOfferProps) => {
           {offer.custom_level ?? offer.level ?? "Niveau inconnu"}
         </p>
         <p>
-            <span className="font-bold">Adresse : </span>
-            {offer.establishment?.location.address}
+          <span className="font-bold">Adresse : </span>
+          {offer.establishment?.location.address}
         </p>
         {offer.establishment?.location.latitude &&
           offer.establishment?.location.longitude && (
