@@ -31,7 +31,7 @@ const DetailOffer = ({ offer, setSelectedOffer }: DetailOfferProps) => {
       </div>
       <CoachCard coachId={offer.coach} />
       <div className="mt-3 mx-3">
-        <div className="float-right flex flex-col ml-5 mb-3 space-y-3">
+        <div className="xs:float-right flex flex-col ml-5 mb-3 space-y-3 items-center">
           <img
             src={offer.establishment?.cover ?? "gym-default.jpg"}
             alt="Establishment"
