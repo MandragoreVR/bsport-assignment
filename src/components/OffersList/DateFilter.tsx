@@ -27,8 +27,6 @@ const DateFilter = ({ setPageIndex }: DateFilterProps) => {
   const onEndDateChange = (date: Date | null) => {
     if (date) {
       date.setHours(12); // to prevent time zone issues
-      console.log("the formatted date", date.toISOString().split("T")[0]);
-
       searchParams.set("endDate", date.toISOString().split("T")[0]);
       if (startDate && date < new Date(startDate)) {
         searchParams.set("startDate", date.toISOString().split("T")[0]);
@@ -54,7 +52,11 @@ const DateFilter = ({ setPageIndex }: DateFilterProps) => {
         onChange={onStartDateChange}
         radius="md"
         size="lg"
-        value={startDate ? new Date(startDate) : new Date()}
+        value={
+          startDate && new Date(startDate) >= new Date()
+            ? new Date(startDate)
+            : new Date()
+        }
       />
       <DatePicker
         className="min-w-[250px] max-w-[250px]"
@@ -68,7 +70,9 @@ const DateFilter = ({ setPageIndex }: DateFilterProps) => {
         onChange={onEndDateChange}
         radius="md"
         size="lg"
-        value={endDate ? new Date(endDate) : null}
+        value={
+          endDate && new Date(endDate) > new Date() ? new Date(endDate) : null
+        }
       />
     </div>
   );

@@ -26,9 +26,11 @@ const OffersList = ({ selectedOffer, setSelectedOffer }: OffersListProps) => {
     `offers from ${startDate ?? ""} to ${endDate ?? ""}, page ${pageIndex}`,
     () =>
       getOffers(
-        startDate ?? new Date().toISOString().split("T")[0],
+        startDate && new Date(startDate) >= new Date()
+          ? startDate
+          : new Date().toISOString().split("T")[0],
         pageIndex,
-        endDate ?? undefined
+        endDate && new Date(endDate) >= new Date() ? endDate : undefined
       )
   );
 
