@@ -23,7 +23,7 @@ const BookingsList = ({ bookingsIds }: BookingsListProps) => {
     );
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col w-[70%] xs:w-full">
       <p className="border-b-2 border-black">Réservations :</p>
       {!data || data.length === 0 ? (
         <p>Aucune réservation pour le moment !</p>

@@ -2,6 +2,7 @@ import "dayjs/locale/fr";
 import { DatePicker } from "@mantine/dates";
 import { IconCalendar } from "@tabler/icons";
 import { useSearchParams } from "react-router-dom";
+import { useMediaQuery } from "@mantine/hooks";
 
 interface DateFilterProps {
   setPageIndex: (pageIndex: number) => void;
@@ -11,6 +12,8 @@ const DateFilter = ({ setPageIndex }: DateFilterProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const startDate = searchParams.get("startDate");
   const endDate = searchParams.get("endDate");
+
+  const isMobile = useMediaQuery("(max-width: 640px)");
 
   const onStartDateChange = (date: Date | null) => {
     if (date) {
@@ -39,11 +42,11 @@ const DateFilter = ({ setPageIndex }: DateFilterProps) => {
   };
 
   return (
-    <div className="flex flex-row space-x-3 justify-center px-3">
+    <div className="flex flex-col justify-center space-y-3 items-center px-3 sm:flex-row sm:space-x-3 sm:space-y-0">
       <DatePicker
         className="min-w-[250px] max-w-[250px]"
         clearable={false}
-        dropdownType="popover"
+        dropdownType={isMobile ? "modal" : "popover"}
         icon={<IconCalendar size={20} />}
         label="À partir du :"
         labelProps={{ className: "pl-4" }}
@@ -60,7 +63,7 @@ const DateFilter = ({ setPageIndex }: DateFilterProps) => {
       />
       <DatePicker
         className="min-w-[250px] max-w-[250px]"
-        dropdownType="popover"
+        dropdownType={isMobile ? "modal" : "popover"}
         icon={<IconCalendar size={20} />}
         label="Jusqu'au :"
         labelProps={{ className: "pl-4" }}

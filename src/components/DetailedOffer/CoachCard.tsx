@@ -24,7 +24,7 @@ const CoachCard = ({ coachId }: CoachCardProps) => {
             alt="Coach"
             className="rounded-[3rem]"
           />
-          <div className="flex space-x-2 ml-2 text-3xl items-center line-clamp-1">
+          <div className="flex space-x-2 ml-2 text-lg xs:text-xl sm:text-3xl items-center line-clamp-1">
             <span className="font-bold">Coach : </span>
             <span>{coach?.user?.name ?? "Inconnu"}</span>
           </div>

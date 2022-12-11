@@ -1,3 +1,5 @@
+import { Modal } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 import { useState } from "react";
 import DetailOffer from "./components/DetailedOffer/DetailOffer";
 import Header from "./components/Header";
@@ -6,6 +8,7 @@ import { FullOffer } from "./types";
 
 function App() {
   const [selectedOffer, setSelectedOffer] = useState<FullOffer>();
+  const useModal = useMediaQuery("(max-width: 1280px)");
   return (
     <div className="flex flex-col items-center">
       <Header />
@@ -14,7 +17,25 @@ function App() {
           selectedOffer={selectedOffer}
           setSelectedOffer={setSelectedOffer}
         />
-        <DetailOffer offer={selectedOffer} />
+        {!useModal ? (
+          <DetailOffer
+            offer={selectedOffer}
+            setSelectedOffer={setSelectedOffer}
+          />
+        ) : (
+          <Modal
+            fullScreen
+            onClose={() => setSelectedOffer(undefined)}
+            opened={!!selectedOffer}
+            padding={0}
+            withCloseButton={false}
+          >
+            <DetailOffer
+              offer={selectedOffer}
+              setSelectedOffer={setSelectedOffer}
+            />
+          </Modal>
+        )}
       </div>
     </div>
   );

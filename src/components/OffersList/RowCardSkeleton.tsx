@@ -13,9 +13,9 @@ const RowCardSkeleton = () => (
       className="justify-self-center self-center rounded-lg"
     />
     <div className="flex flex-col self-center">
-      <Skeleton height="20px" width={300} className="rounded-md mb-3" />
-      <Skeleton height="20px" width={370} className="rounded-md mb-3" />
-      <Skeleton height="20px" width={350} className="rounded-md mb-3" />
+      <Skeleton height="20px" width="60%" className="rounded-md mb-3" />
+      <Skeleton height="20px" width="90%" className="rounded-md mb-3" />
+      <Skeleton height="20px" width="80%" className="rounded-md mb-3" />
     </div>
   </div>
 );
