@@ -21,6 +21,7 @@ const apiInstance = axios.create({
 const getMetaActivities = async (
   metaActivitiesIds: Set<number>
 ): Promise<MetaActivity[]> => {
+  if (metaActivitiesIds.size === 0) return [];
   const response = await apiInstance.get<BSportApiResponse<MetaActivity>>(
     `${apiURL}/meta-activity?company=${companyId}&id__in=${Array.from(
       metaActivitiesIds
@@ -32,6 +33,7 @@ const getMetaActivities = async (
 const getEstablishments = async (
   establishmentsIds: Set<number>
 ): Promise<Establishment[]> => {
+  if (establishmentsIds.size === 0) return [];
   const response = await apiInstance.get<BSportApiResponse<Establishment>>(
     `${apiURL}/establishment?company=${companyId}&id__in=${Array.from(
       establishmentsIds
@@ -99,6 +101,7 @@ export const getOffers = async (
 // ******* Retrieval of the bookings *******
 
 const getMembers = async (membersIds: Set<number>): Promise<Member[]> => {
+  if (membersIds.size === 0) return [];
   const response = await apiInstance.get<BSportApiResponse<Member>>(
     `${apiURL}/member?company=${companyId}&id__in=${Array.from(membersIds).join(
       ","
@@ -110,6 +113,7 @@ const getMembers = async (membersIds: Set<number>): Promise<Member[]> => {
 export const getBookings = async (
   bookingIds: number[]
 ): Promise<BookingWithFullMember[]> => {
+  if (bookingIds.length === 0) return [];
   const response = await apiInstance.get<BSportApiResponse<Booking>>(
     `${apiURL}/booking?id__in=${bookingIds.join(",")}`
   );

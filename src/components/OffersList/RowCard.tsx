@@ -14,7 +14,7 @@ const RowCard = ({
   selectedOfferId,
   setSelectedOffer,
 }: RowCardProps) => {
-  const photoURL = offer.meta_activity?.cover_main ?? "default_sport.jpg";
+  const photoURL = offer.meta_activity?.cover_main ?? "default-sport.jpg";
   return (
     <div
       className={`pr-1 pl-2 py-2 h-[140px] cursor-pointer grid grid-cols-2 grid-rows-1 gap-x-4 hover:bg-[#f1f1f1] rounded-lg ${
@@ -34,17 +34,17 @@ const RowCard = ({
       </div>
       <div className="self-center pr-3">
         <p className="font-medium text-2xl line-clamp-1 mb-1">
-          <div>{offer.meta_activity?.name}</div>
+          <span>{offer.meta_activity?.name}</span>
         </p>
         <p className="text-lg line-clamp-1 mb-1">
-          <div>
+          <span>
             {getFrenchDateFromISO(offer.date_start)} -{" "}
             {getFrenchTimeFromISO(offer.date_start)} (
             {getDurationStringFromLengthInMinutes(offer.duration_minute)})
-          </div>
+          </span>
         </p>
         <p className="font-medium text-base line-clamp-1 mb-1">
-          <div>{offer.establishment?.location.address}</div>
+          <span>{offer.establishment?.location.address}</span>
         </p>
         {offer.available && !offer.full ? (
           <span className="flex justify-end font-semibold text-xs text-green-600 flex-grow">
