@@ -16,7 +16,7 @@ interface DetailOfferProps {
 const DetailOffer = ({ offer, setSelectedOffer }: DetailOfferProps) => {
   if (!offer) return null;
   return (
-    <div className="flex flex-col border-none w-full h-full mt-0 xl:border-2 xl:w-[40vw] xl:h-[85vh] xl:mt-5 overflow-auto pb-4">
+    <div className="flex flex-col border-0 w-full h-full mt-0 xl:border-2 xl:w-[40vw] xl:h-[85vh] xl:mt-5 overflow-auto pb-4">
       <DetailCardHeader
         offerName={offer.meta_activity?.name}
         offerPicture={offer.meta_activity?.cover_main}

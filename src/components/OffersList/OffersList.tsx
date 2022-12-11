@@ -43,7 +43,7 @@ const OffersList = ({ selectedOffer, setSelectedOffer }: OffersListProps) => {
   }, [data, pageIndex]);
 
   return (
-    <div className="flex flex-col border-2 bg-gray-50 w-[40vw] min-w-[575px] max-w-[575px] h-[85vh] mt-5">
+    <div className="flex flex-col border-2 bg-gray-50 w-screen h-[calc(100vh-5rem)] sm:min-w-[575px] sm:max-w-[575px] xl:h-[85vh] xl:mt-5">
       <Filters setPageIndex={setPageIndex} />
       {isLoading && pageIndex === 1 ? (
         <div className="mt-4">
