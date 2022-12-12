@@ -1,4 +1,5 @@
 import DateFilter from "./DateFilter";
+import React from "react";
 
 interface FilterProps {
   setPageIndex: (pageIndex: number) => void;

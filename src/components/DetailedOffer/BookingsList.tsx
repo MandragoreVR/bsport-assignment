@@ -1,4 +1,5 @@
 import { Loader, Spoiler } from "@mantine/core";
+import React from "react";
 import { useQuery } from "react-query";
 import { getBookings } from "../../api";
 import { BookingWithFullMember } from "../../types";

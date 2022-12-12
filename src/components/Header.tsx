@@ -1,3 +1,5 @@
+import React from "react";
+
 /**
  * This component is the header of the application, with the logo of Company 6
  * and a title (displayed only on large screens)

@@ -7,6 +7,7 @@ import CoachCard from "./CoachCard";
 import DetailCardHeader from "./DetailCardHeader";
 import LeafletMap from "./LeafletMap";
 import { IconX } from "@tabler/icons";
+import React from "react";
 
 interface DetailOfferProps {
   offer?: FullOffer;
@@ -47,7 +48,7 @@ const DetailOffer = ({ offer, setSelectedOffer }: DetailOfferProps) => {
           <BookingsList bookingsIds={offer.bookings ?? []} />
         </div>
         <p className="text-justify">
-          <span className="font-bold">Description de l'activité : </span>
+          <span className="font-bold">Description de l&apos;activité : </span>
           {offer.meta_activity?.description}
         </p>
         <p>

@@ -3,6 +3,7 @@ import { FullOffer } from "../../types";
 import getDurationStringFromLengthInMinutes from "../../utils/getDurationStringFromLengthInMinutes";
 import getFrenchDateFromISO from "../../utils/getFrenchDateFromISO";
 import getFrenchTimeFromISO from "../../utils/getFrenchTimeFromISO";
+import React from "react";
 
 interface RowCardProps {
   offer: FullOffer;

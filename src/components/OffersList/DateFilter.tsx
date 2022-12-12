@@ -1,6 +1,7 @@
 import "dayjs/locale/fr";
 import { DatePicker } from "@mantine/dates";
 import { IconCalendar } from "@tabler/icons";
+import React from "react";
 import { useSearchParams } from "react-router-dom";
 import { useMediaQuery } from "@mantine/hooks";
 

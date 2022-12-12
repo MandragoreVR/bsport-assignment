@@ -1,4 +1,5 @@
 import { Avatar, Loader } from "@mantine/core";
+import React from "react";
 import { useQuery } from "react-query";
 import { getCoach } from "../../api";
 import { Coach } from "../../types";
