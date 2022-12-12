@@ -4,6 +4,14 @@ interface DetailCardHeaderProps {
   offerPictureAlt?: string;
 }
 
+/**
+ * This component is the header of the DetailedOffer page.
+ * It displays the name of the offer and its picture with a gradient.
+ * @param offerName The name of the offer
+ * @param offerPicture The picture of the offer
+ * @param offerPictureAlt The alt text of the picture
+ * @returns The header of the DetailedOffer page
+ */
 const DetailCardHeader = ({
   offerName,
   offerPicture,

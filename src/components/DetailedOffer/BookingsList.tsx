@@ -8,6 +8,12 @@ interface BookingsListProps {
   bookingsIds: number[];
 }
 
+/**
+ * Component that fetches the bookings of an offer (and the members of these bookings)
+ * and displays them. If there are too many bookings, they are hidden behind a spoiler.
+ * @param bookingsIds The IDs of the bookings to fetch
+ * @returns The bookings list
+ */
 const BookingsList = ({ bookingsIds }: BookingsListProps) => {
   const { isLoading, data } = useQuery<BookingWithFullMember[]>(
     `bookings: ${bookingsIds.join(",")}`,
@@ -29,16 +35,16 @@ const BookingsList = ({ bookingsIds }: BookingsListProps) => {
         <p>Aucune réservation pour le moment !</p>
       ) : (
         <Spoiler
+          hideLabel={
+            <div className="text-black hover:underline decoration-black flex flex-row items-center">
+              Réduire <IconChevronUp size={20} className="pb-[1px]" />
+            </div>
+          }
           maxHeight={100}
           showLabel={
             <div className="text-black hover:underline decoration-black flex flex-row items-center">
               Voir toutes les réservations{" "}
               <IconChevronDown size={20} className="pb-[1px]" />
-            </div>
-          }
-          hideLabel={
-            <div className="text-black hover:underline decoration-black flex flex-row items-center">
-              Réduire <IconChevronUp size={20} className="pb-[1px]" />
             </div>
           }
         >

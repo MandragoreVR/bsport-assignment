@@ -18,6 +18,11 @@ const apiInstance = axios.create({
 
 // ******* Retrieval of the offers *******
 
+/**
+ * This function fetches the required meta activities from the API.
+ * @param metaActivitiesIds - The ids of the meta activities to fetch.
+ * @returns The meta activities.
+ */
 const getMetaActivities = async (
   metaActivitiesIds: Set<number>
 ): Promise<MetaActivity[]> => {
@@ -30,6 +35,11 @@ const getMetaActivities = async (
   return response.data.results;
 };
 
+/**
+ * This function fetches the required establishments from the API.
+ * @param establishmentsIds - The ids of the establishments to fetch.
+ * @returns The establishments.
+ */
 const getEstablishments = async (
   establishmentsIds: Set<number>
 ): Promise<Establishment[]> => {
@@ -42,6 +52,14 @@ const getEstablishments = async (
   return response.data.results;
 };
 
+/**
+ * This function fetches the offers from the API.
+ * @param fromDate - The date from which to fetch the offers.
+ * @param pageIndex - The index of the page to fetch.
+ * @param toDate - The date until which to fetch the offers.
+ * @returns The offers (with the full meta activites and establishments objects)
+ * and the total number of offers.
+ */
 export const getOffers = async (
   fromDate: string,
   pageIndex: number,
@@ -100,6 +118,11 @@ export const getOffers = async (
 
 // ******* Retrieval of the bookings *******
 
+/**
+ * This function fetches the required members from the API.
+ * @param membersIds - The ids of the members to fetch.
+ * @returns The members.
+ */
 const getMembers = async (membersIds: Set<number>): Promise<Member[]> => {
   if (membersIds.size === 0) return [];
   const response = await apiInstance.get<BSportApiResponse<Member>>(
@@ -110,6 +133,11 @@ const getMembers = async (membersIds: Set<number>): Promise<Member[]> => {
   return response.data.results;
 };
 
+/**
+ * This function fetches the required bookings from the API.
+ * @param bookingIds  - The ids of the bookings to fetch.
+ * @returns The bookings (with the full member object).
+ */
 export const getBookings = async (
   bookingIds: number[]
 ): Promise<BookingWithFullMember[]> => {
@@ -142,6 +170,11 @@ export const getBookings = async (
 
 // ******* Retrieval of one coach *******
 
+/**
+ * This function fetches the required coach from the API.
+ * @param coachId - The id of the coach to fetch.
+ * @returns The coach.
+ */
 export const getCoach = async (coachId: number): Promise<Coach> => {
   const response = await apiInstance.get<BSportApiResponse<Coach>>(
     `${apiURL}/coach?company=${companyId}&id__in=${coachId}`

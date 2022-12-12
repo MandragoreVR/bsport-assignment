@@ -5,7 +5,7 @@ import getFrenchTimeFromISO from "../../utils/getFrenchTimeFromISO";
 import BookingsList from "./BookingsList";
 import CoachCard from "./CoachCard";
 import DetailCardHeader from "./DetailCardHeader";
-import LeafletMap from "./Map/LeafletMap";
+import LeafletMap from "./LeafletMap";
 import { IconX } from "@tabler/icons";
 
 interface DetailOfferProps {
@@ -13,6 +13,13 @@ interface DetailOfferProps {
   setSelectedOffer: (offer?: FullOffer) => void;
 }
 
+/**
+ * This component is the main component of the DetailedOffer panel.
+ * It displays all the useful information about the selected offer.
+ * @param offer The offer to display
+ * @param setSelectedOffer The function to call with "undefined" to close the DetailedOffer panel
+ * @returns The DetailedOffer panel when a selected offer is provided, null otherwise
+ */
 const DetailOffer = ({ offer, setSelectedOffer }: DetailOfferProps) => {
   if (!offer) return null;
   return (

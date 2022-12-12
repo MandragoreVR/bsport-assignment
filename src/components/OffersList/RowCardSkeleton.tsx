@@ -1,5 +1,8 @@
 import { Skeleton } from "@mantine/core";
 
+/**
+ * This component is a skeleton displayed in place of the RowCard component while the data is loading
+ */
 const RowCardSkeleton = () => (
   <div
     className="h-[140px] grid grid-cols-2 grid-rows-1 gap-x-4 pl-2"
@@ -8,14 +11,14 @@ const RowCardSkeleton = () => (
     }}
   >
     <Skeleton
+      className="justify-self-center self-center rounded-lg"
       height="120px"
       width="120px"
-      className="justify-self-center self-center rounded-lg"
     />
     <div className="flex flex-col self-center">
-      <Skeleton height="20px" width="60%" className="rounded-md mb-3" />
-      <Skeleton height="20px" width="90%" className="rounded-md mb-3" />
-      <Skeleton height="20px" width="80%" className="rounded-md mb-3" />
+      <Skeleton className="rounded-md mb-3" height="20px" width="60%" />
+      <Skeleton className="rounded-md mb-3" height="20px" width="90%" />
+      <Skeleton className="rounded-md mb-3" height="20px" width="80%" />
     </div>
   </div>
 );
