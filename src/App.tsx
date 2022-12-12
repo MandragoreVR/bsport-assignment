@@ -1,6 +1,6 @@
 import { Modal } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
-import { useState } from "react";
+import React, { useState } from "react";
 import DetailOffer from "./components/DetailedOffer/DetailOffer";
 import Header from "./components/Header";
 import OffersList from "./components/OffersList/OffersList";

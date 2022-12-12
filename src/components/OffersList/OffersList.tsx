@@ -1,6 +1,7 @@
 import { FullOffer } from "../../types";
 import Filters from "./Filters";
 import RowCard from "./RowCard";
+import React from "react";
 import { useQuery } from "react-query";
 import { useSearchParams } from "react-router-dom";
 import { getOffers } from "../../api";

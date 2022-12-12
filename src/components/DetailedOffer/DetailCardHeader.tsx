@@ -1,3 +1,5 @@
+import React from "react";
+
 interface DetailCardHeaderProps {
   offerName?: string;
   offerPicture?: string;

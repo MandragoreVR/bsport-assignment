@@ -1,4 +1,5 @@
 import { Skeleton } from "@mantine/core";
+import React from "react";
 
 /**
  * This component is a skeleton displayed in place of the RowCard component while the data is loading

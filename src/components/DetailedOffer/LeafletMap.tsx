@@ -2,7 +2,7 @@ import { MapContainer, Marker, TileLayer, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import markerIconPng from "leaflet/dist/images/marker-icon.png";
 import { Icon, LatLng } from "leaflet";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 
 interface LeafletMapProps {
   establishmentLatitude: number;
