@@ -26,7 +26,7 @@ const DetailCardHeader = ({
       <div className="w-full h-1/3 z-10 absolute bottom-0 left-0 bg-gradient-to-t from-[#2e2e2efc] to-[#00000000] opacity-100 group-hover:opacity-50 transition duration-200"></div>
 
       <div className="absolute top-0 left-0 z-0 flex w-full h-full justify-center">
-        <img src={photoURL} alt={offerPictureAlt} />
+        <img data-testid="header image" src={photoURL} alt={offerPictureAlt} />
       </div>
 
       <div className="capitalize absolute z-50 text-4xl font-extrabold">
