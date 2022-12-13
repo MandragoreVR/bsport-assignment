@@ -30,7 +30,7 @@ const getSingleBooking = (id: number, name: string): BookingWithFullMember => ({
   spot_id: 1,
 });
 
-export const bookingsList: BookingWithFullMember[] = [
+const bookingsList: BookingWithFullMember[] = [
   getSingleBooking(1, "John Doe"),
   getSingleBooking(2, "Jane Doe"),
   getSingleBooking(3, "John Doe 2"),
