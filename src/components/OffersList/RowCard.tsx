@@ -30,6 +30,7 @@ const RowCard = ({
       className={`pr-1 pl-2 py-2 h-[140px] cursor-pointer grid grid-cols-2 grid-rows-1 gap-x-4 hover:bg-[#f1f1f1] rounded-lg ${
         selectedOfferId === offer.id ? "bg-[#f1f1f1]" : ""
       } active:bg-[#e1e1e1]`}
+      data-testid="row card"
       style={{
         gridTemplateColumns: "2fr 5fr",
       }}
@@ -38,6 +39,7 @@ const RowCard = ({
       <div className="w-full justify-center flex min-w-[160px] sm:min-w-0">
         <img
           className="max-h-[130px]"
+          data-testid="image"
           src={photoURL}
           alt={offer.meta_activity?.alt_cover_main ?? "Photo de l'offre"}
         />

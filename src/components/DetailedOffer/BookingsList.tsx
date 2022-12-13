@@ -25,25 +25,33 @@ const BookingsList = ({ bookingsIds }: BookingsListProps) => {
     return (
       <div className="flex flex-col">
         <p className="border-b-2 border-black">Réservations :</p>
-        <Loader className="ml-5 mt-2" />
+        <Loader data-testid="loader" className="ml-5 mt-2" />
       </div>
     );
 
   return (
     <div className="flex flex-col w-[70%] xs:w-full">
-      <p className="border-b-2 border-black">Réservations :</p>
+      <p data-testid="title" className="border-b-2 border-black">
+        Réservations :
+      </p>
       {!data || data.length === 0 ? (
-        <p>Aucune réservation pour le moment !</p>
+        <p data-testid="no data">Aucune réservation pour le moment !</p>
       ) : (
         <Spoiler
           hideLabel={
-            <div className="text-black hover:underline decoration-black flex flex-row items-center">
+            <div
+              data-testid="see less"
+              className="text-black hover:underline decoration-black flex flex-row items-center"
+            >
               Réduire <IconChevronUp size={20} className="pb-[1px]" />
             </div>
           }
           maxHeight={100}
           showLabel={
-            <div className="text-black hover:underline decoration-black flex flex-row items-center">
+            <div
+              data-testid="see more"
+              className="text-black hover:underline decoration-black flex flex-row items-center"
+            >
               Voir toutes les réservations{" "}
               <IconChevronDown size={20} className="pb-[1px]" />
             </div>
