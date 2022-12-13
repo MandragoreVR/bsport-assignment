@@ -21,12 +21,13 @@ const CoachCard = ({ coachId }: CoachCardProps) => {
   return (
     <div className="bg-gray-200 rounded-lg min-h-[100px] mt-3 mx-3 flex justify-center items-center">
       {isLoading ? (
-        <Loader />
+        <Loader data-testid="loader" />
       ) : (
         <div className="flex flex-row items-center space-x-4 px-3">
           <Avatar
             alt="Coach"
             className="rounded-[3rem]"
+            data-testid="coach avatar"
             size="xl"
             src={coach?.user?.photo}
           />
