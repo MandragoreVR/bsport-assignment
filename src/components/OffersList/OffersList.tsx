@@ -54,7 +54,7 @@ const OffersList = ({ selectedOffer, setSelectedOffer }: OffersListProps) => {
     <div className="flex flex-col border-2 bg-gray-50 w-screen h-[calc(100vh-5rem)] sm:min-w-[575px] sm:max-w-[575px] xl:h-[85vh] xl:mt-5">
       <Filters setPageIndex={setPageIndex} />
       {isLoading && pageIndex === 1 ? (
-        <div className="mt-4">
+        <div className="mt-4" data-testid="skeletons">
           <RowCardSkeleton />
           <RowCardSkeleton />
           <RowCardSkeleton />
@@ -75,6 +75,7 @@ const OffersList = ({ selectedOffer, setSelectedOffer }: OffersListProps) => {
           {(data?.count ?? offers.length + 1) > offers.length && (
             <div
               className="w-full bg-[#f1f1f1] hover:bg-[#dcdbdb] active:bg-[#cdcccc] flex justify-center items-center text-lg cursor-pointer h-[75px] mt-2 mr-4"
+              data-testid="load more results"
               onClick={() =>
                 setPageIndex((previousPageIndex) => previousPageIndex + 1)
               }
